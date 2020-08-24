@@ -1,20 +1,29 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.9.3/umd/popper.min.js" integrity="sha384-knhBOwpf8/28D6ygAjJeb0STNDZqfPbKaWQ8wIz/xgSc0xXwKsKhNype8fmfMka2" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/popper.js/1.9.3/umd/popper.min.js"
+        integrity="sha384-knhBOwpf8/28D6ygAjJeb0STNDZqfPbKaWQ8wIz/xgSc0xXwKsKhNype8fmfMka2" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
     <script type="text/javascript">
         var network = {
             blockchain: "binance",
             chainId: "Binance-Chain-Tigris"
         };
+
         function login() {
             // identity = {
             //     account: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
@@ -28,6 +37,7 @@
                 console.log(e);
             })
         }
+
         function logout() {
             mathExtension.forgetIdentity().then(response => {
                 console.log(response);
@@ -42,7 +52,8 @@
                 account_number: 34,
                 sequence: 9,
                 memo: "",
-                type: "MsgSend",
+                type: "SendMsg",
+                sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                 msg: {
                     inputs: [{
                         address: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
@@ -77,13 +88,13 @@
                 sequence: 19,
                 memo: "",
                 type: "NewOrderMsg",
+                sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                 msg: {
-                    sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
-                    symbol: "000-0E1",          // the market pair
-                    side: 1,                    // (1-Buy, 2-Sell)
+                    symbol: "000-0E1", // the market pair
+                    side: 1, // (1-Buy, 2-Sell)
                     price: "0.0006",
                     quantity: "100",
-                    timeinforce: 1              //  (1-GTC(Good Till Expire), 3-IOC(Immediate or Cancel))
+                    timeinforce: 1 //  (1-GTC(Good Till Expire), 3-IOC(Immediate or Cancel))
                 }
             };
             /*
@@ -95,8 +106,8 @@
                 sequence: 19,
                 memo: "",
                 type: "CancelOrderMsg",
+                sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                 msg: {
-                    sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                     symbol: "000-0E1_BNB",          // the market pair
                     refid: "D45680690CA96DB3EFF82EBA239BA8BF680A9F31-20"
                 }
@@ -114,15 +125,17 @@
 </head>
 
 <body>
-<div class="container bs-docs-container">
-    <h3>BinanceChain JS 测试</h3>
-    <div id="loginDiv"></div></br>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="login()">Login</button></br>
-    <button type="button" class="btn btn-danger btn-lg btn-block" onclick="logout()">Logout</button></br>
-    <div id="signatureDiv"></div></br>
-    <button type="button" class="btn btn-success btn-lg btn-block" onclick="transferTransaction()">Transfer Transaction</button></br>
-    <button type="button" class="btn btn-warning btn-lg btn-block" onclick="signTransaction()">Other Transaction</button>
-</div>
+    <div class="container bs-docs-container">
+        <h3>BinanceChain JS 测试</h3>
+        <div id="loginDiv"></div></br>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="login()">Login</button></br>
+        <button type="button" class="btn btn-danger btn-lg btn-block" onclick="logout()">Logout</button></br>
+        <div id="signatureDiv"></div></br>
+        <button type="button" class="btn btn-success btn-lg btn-block" onclick="transferTransaction()">Transfer
+            Transaction</button></br>
+        <button type="button" class="btn btn-warning btn-lg btn-block" onclick="signTransaction()">Other
+            Transaction</button>
+    </div>
 </body>
 
 </html>
