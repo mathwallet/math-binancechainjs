@@ -88,8 +88,8 @@
                 sequence: 19,
                 memo: "",
                 type: "NewOrderMsg",
-                sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                 msg: {
+                    address: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                     symbol: "000-0E1", // the market pair
                     side: 1, // (1-Buy, 2-Sell)
                     price: "0.0006",
@@ -106,13 +106,87 @@
                 sequence: 19,
                 memo: "",
                 type: "CancelOrderMsg",
-                sender: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                 msg: {
+                    address: "bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur",
                     symbol: "000-0E1_BNB",          // the market pair
                     refid: "D45680690CA96DB3EFF82EBA239BA8BF680A9F31-20"
                 }
             };
+            //  BindMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "BindMsg",
+                msg: {
+                    from,
+                    symbol,
+                    amount,
+                    contract_address,
+                    contract_decimals,
+                    expire_time
+                }
+            };
+            //  ClaimMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "ClaimMsg",
+                msg: {
+                    claim_type,
+                    sequence,
+                    claim,
+                    validator_address
+                }
+            };
+            //  BscDelegateMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "BscDelegateMsg",
+                msg: {
+                    delegator_addr,
+                    validator_addr,
+                    delegation,
+                    side_chain_id
+                }
+            };
+            //  BscReDelegateMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "BscReDelegateMsg",
+                msg: {
+                    delegator_addr,
+                    validator_src_addr,
+                    validator_dst_addr,
+                    amount,
+                    side_chain_id
+                }
+            };
+            //  BscUndelegateMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "BscUndelegateMsg",
+                msg: {
+                    delegator_addr,
+                    validator_addr,
+                    amount,
+                    side_chain_id
+                }
+            };
             */
+
             // Request Signature
             mathExtension.requestSignature(transaction, network).then(signedTransaction => {
                 console.log(JSON.stringify(signedTransaction));
