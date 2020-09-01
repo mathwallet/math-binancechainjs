@@ -185,6 +185,20 @@
                     side_chain_id
                 }
             };
+            //  TransferOutMsg
+            var transaction = {
+                chain_id: "Binance-Chain-Tigris",
+                account_number: 34,
+                sequence: 19,
+                memo: "",
+                type: "TransferOutMsg",
+                msg: {
+                    from,       // bnb163tgq6gv49km8mlc96az8xagha5q48e325c5ur
+                    to,         // 0x55DA3246865921072B14F2bcA5cF55F4Ae017cDe
+                    amount:{ denom: "BNB", amount: "1" },     
+                    expire_time: Date.parse(new Date()) / 1000 + 60 * 3 
+                }
+            };
             */
 
             // Request Signature
